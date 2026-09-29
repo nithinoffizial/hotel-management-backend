@@ -1,4 +1,3 @@
-
 package com.example.hotelproject.controller;
 
 import com.example.hotelproject.entity.Room;
@@ -10,7 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/rooms")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "https://hotel-management-frontend-v7bs.onrender.com"
+})
 public class RoomController {
 
     private final RoomService roomService;
@@ -20,8 +23,8 @@ public class RoomController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Room>> getAllRooms() {
-        return ResponseEntity.ok(roomService.getAllRooms());
+    public List<Room> getAllRooms() {
+        return roomService.getAllRooms();
     }
 
     @GetMapping("/{id}")
